@@ -50,7 +50,7 @@ app.get('/post', function(req, res) {
     url: 'https://hiliteapp.herokuapp.com/post',
     method: 'POST',
     json: {
-      "post": "test post please ignore",
+      "post": req,
     }
   }, function(error, response, body) {
     if (error) {
@@ -66,6 +66,9 @@ app.post('/post', function (req, res) {
   console.log("message recieved");
   insertDocument(db, function() {
     db.close();
+  });
+  return res.status(200).send({
+    message : "Your message has been posted"
   });
 });
 
