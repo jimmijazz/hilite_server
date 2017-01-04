@@ -46,6 +46,7 @@ app.get('/post', function(req, res) {
       console.log("Error: ", response.body.error)
     };
   })
+  res.send("Adding Message");
 })
 
 app.post('/post', function (req, res) {
