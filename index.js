@@ -32,6 +32,17 @@ app.get('/', function(req, res) {
   res.send('Hilite App');
 });
 
+app.post('/post', function (req, res) {
+  db.collection("POSTS").insert({req}, function(err, result) {
+    if (err) {
+      console.log("Error adding post. Error: ", err);
+    } else {
+      console.log("Updated posts")
+    }
+  })
+});
+
+
 app.listen(port, function() {
-  console.log("Listening on Post 3000");
+  console.log("Listening on Port" + port);
 });
