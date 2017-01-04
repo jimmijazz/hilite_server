@@ -8,6 +8,8 @@ var port = process.env.PORT || 8080;
 const mongodb = require("mongodb");
 const ObjectID = mongodb.ObjectID;
 
+var POSTS = "posts";
+
 //Connect to database before starting the application Server
 mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
   if (err) {
@@ -50,7 +52,8 @@ app.get('/post', function(req, res) {
 })
 
 app.post('/post', function (req, res) {
-  db.collection("posts").insert(req, function(err, result) {
+  console.log("message recieved");
+  db.collection(POSTS).insert(req, function(err, result) {
     if (err) {
       console.log("Error adding post. Error: ", err);
     } else {
