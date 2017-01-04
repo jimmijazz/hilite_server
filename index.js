@@ -25,8 +25,11 @@ var insertDocument = function(db, callback) {
   db.collection(POSTS).insertOne({
     "title" : "Test link"
   }, function(err, results) {
-      assert.equal(err, null);
+      if (err) {
+        console.log(err);
+      } else {
       console.log("inserted into posts");
+    };
   });
 };
 
