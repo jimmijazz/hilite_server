@@ -22,9 +22,7 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 });
 
 var insertDocument = function(db, content, callback) {
-  db.collection(POSTS).insertOne({
-    "title" : "Test link"
-  }, function(err, results) {
+  db.collection(POSTS).insertOne(content, function(err, results) {
       if (err) {
         console.log(err);
       } else {
