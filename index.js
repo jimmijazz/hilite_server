@@ -21,6 +21,14 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
   console.log("database connection ready");
 });
 
+var insertDocument = function(db, callback) {
+  db.collection(POSTS).insertOne({
+    "title" : "Test link"
+  }, function(err, results) {
+      assert.equal(err, null);
+      console.log("inserted into posts");
+  });
+};
 
 // Start webserver
 app.use(express.static(__dirname + "/public"));
@@ -53,13 +61,9 @@ app.get('/post', function(req, res) {
 
 app.post('/post', function (req, res) {
   console.log("message recieved");
-  db.collection(POSTS).insert(req, function(err, result) {
-    if (err) {
-      console.log("Error adding post. Error: ", err);
-    } else {
-      console.log("Updated posts")
-    }
-  })
+  insertDocument(db, function() {
+    db.close();
+  });
 });
 
 
