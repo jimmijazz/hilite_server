@@ -32,8 +32,24 @@ app.get('/', function(req, res) {
   res.send('Hilite App');
 });
 
+app.get('/post', function(req, res) {
+  request({
+    url: 'https://hiliteapp.herokuapp.com/post',
+    method: 'POST',
+    json: {
+      "post": "test post please ignore",
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log("Error sending messages: ", error)
+    } else if (response.body.error) {
+      console.log("Error: ", response.body.error)
+    };
+  })
+})
+
 app.post('/post', function (req, res) {
-  db.collection("POSTS").insert({req}, function(err, result) {
+  db.collection("POSTS").insert(req, function(err, result) {
     if (err) {
       console.log("Error adding post. Error: ", err);
     } else {
