@@ -32,6 +32,6 @@ app.get('/', function(req, res) {
   res.send('Hilite App');
 });
 
-app.listen((port, function() {
+app.listen(port, function() {
   console.log("Listening on Post 3000");
 });
