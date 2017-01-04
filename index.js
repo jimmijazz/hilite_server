@@ -63,7 +63,7 @@ app.get('/', function(req, res) {
 app.post('/post', function (req, res) {
   console.log("message recieved");
   console.log(req);
-  insertDocument(db, {"title":"title"}, function() {
+  insertDocument(db, req.body, function() {
     db.close();
   });
   return res.status(200).send({
