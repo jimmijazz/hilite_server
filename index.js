@@ -62,7 +62,8 @@ app.get('/', function(req, res) {
 
 app.post('/post', function (req, res) {
   console.log("message recieved");
-    insertDocument(db, {"title":"title"}, function() {
+  console.log(req);
+  insertDocument(db, {"title":"title"}, function() {
     db.close();
   });
   return res.status(200).send({
