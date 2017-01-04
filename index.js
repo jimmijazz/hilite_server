@@ -50,7 +50,7 @@ app.get('/post', function(req, res) {
 })
 
 app.post('/post', function (req, res) {
-  db.collection("POSTS").insert(req, function(err, result) {
+  db.collection("posts").insert(req, function(err, result) {
     if (err) {
       console.log("Error adding post. Error: ", err);
     } else {
