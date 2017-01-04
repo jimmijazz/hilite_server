@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 
+var port = process.env.PORT || 8080;
+
 const mongodb = require("mongodb");
 const ObjectID = mongodb.ObjectID;
 
@@ -30,5 +32,6 @@ app.get('/', function(req, res) {
   res.send('Hilite App');
 });
 
-app.listen((process.env.PORT || 3000));
-console.log("Listening on Post 3000");
+app.listen((port, function() {
+  console.log("Listening on Post 3000");
+});
