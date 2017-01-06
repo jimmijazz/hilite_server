@@ -17,5 +17,5 @@ var getItems = function(userID) {
 }
 
 $(document).ready(function() {
-  console.log(getItems(userid));
+  getItems(userid);
 });
