@@ -76,7 +76,6 @@ app.post('/post', function (req, res) {
 });
 
 app.post('/links', function(req, res) {
-  console.log('fetching links')
   console.log(req.body.id);
   db.collection(POSTS).findOne(
     {_id : req.body.id}
@@ -84,8 +83,9 @@ app.post('/links', function(req, res) {
     if (err) {
       console.log(err);
       return res.sendStatus(503)
-    } else if (!err) {
+    } else {
       return res.status(200).send({
+        console.log(result);
         data : result
       });
     }
