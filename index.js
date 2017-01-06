@@ -43,7 +43,9 @@ var insertPost = function(db, content, callback) {
 
   db.collection(POSTS).update(
     { _id : content._id},
-    { items : content },
+    {$push:
+      { items : content }
+    },
     { upsert : true },
     function(err) {
       if (err) console.log(err);
