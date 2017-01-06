@@ -4,7 +4,7 @@ var userid = "16b8be7599b43835e5dafd448de630664b4cacf551f7ad18ee49ca094cdcc44";
 
 // Contains all the item cards and loads list data
 var ItemBox = React.createClass({
-  getItems : function() {
+  getItems() => {
     $.post(
         base_url + "/links",
         {"id" : this.props.userID},
