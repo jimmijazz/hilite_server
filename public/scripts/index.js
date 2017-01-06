@@ -35,7 +35,7 @@ var ItemBox = React.createClass({
 // List of each of the item cards
 var ItemList = React.createClass({
   render: function() {
-    var listNodes = this.props.data.items.map(function(item) {
+    var listNodes = this.props.data.map(function(item) {
       return (
         <ItemCard host={item.hostname} text={item.text} url={item.url} >
           {item.text}
