@@ -16,8 +16,7 @@ var getItems = function(userID) {
   })
 };
 
-var itemBox = React.createClass({
-  console.log(this.props);
+var ItemBox = React.createClass({
   getItems : function() {
     $.post(
         base_url + "/links",
@@ -63,6 +62,6 @@ var itemList = React.createClass({
 
 
 ReactDOM.render(
-  <itemBox userID={userid} pollInterval={2000} />,
+  <ItemBox userID={userid} pollInterval={2000} />,
   document.getElementById('content')
 );
