@@ -21,8 +21,8 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
   console.log("database connection ready");
 });
 
-var insertDocument = function(db, content, callback) {
-  db.collection(POSTS).insertOne(content, function(err, results) {
+var insertPost = function(db, content, callback) {
+  db.collection(POSTS).update(db._id, content, {upsert: true}, function(err, results) {
       if (err) {
         console.log(err);
       } else {
@@ -43,27 +43,8 @@ app.get('/', function(req, res) {
   res.send('Hilite App');
 });
 
-// app.get('/post', function(req, res) {
-//   request({
-//     url: 'https://hiliteapp.herokuapp.com/post',
-//     method: 'POST',
-//     json: {
-//       "post": req,
-//     }
-//   }, function(error, response, body) {
-//     if (error) {
-//       console.log("Error sending messages: ", error)
-//     } else if (response.body.error) {
-//       console.log("Error: ", response.body.error)
-//     };
-//   })
-//   res.send("Adding Message");
-// })
-
 app.post('/post', function (req, res) {
-  console.log("message recieved");
-  console.log(req);
-  insertDocument(db, req.body, function() {
+  insertPost(db, req.body, function() {
     db.close();
   });
   return res.status(200).send({
