@@ -14,8 +14,54 @@ var getItems = function(userID) {
           console.log(data);
         }
   })
-}
+};
 
-$(document).ready(function() {
-  getItems(userid);
+var itemBox = React.createClass({
+  getItems : function() {
+    $.post(
+        base_url + "/links",
+        {"id" : this.props.userID},
+        function(err, data) {
+          if (err) {
+            console.log(err);
+          } else {
+            this.setState({data: data});
+          }
+    })
+  },
+  getInitialState: function() {
+    return {datal []};
+  },
+  componentDidMount: function() {
+    this.getItems();
+    setInterval(this.getItems, this.props.pollInterval);
+  },
+  render: function() {
+    return (
+      <div className="itemsBox">
+        <itemList data = {this.state.data} />
+      </div>
+    )
+  }
 });
+
+var itemList = React.createclass({
+  render: function() {
+    var listNodes = this.props.data.map(function(item) {
+      return (
+        <p>{data}</p>
+      );
+    });
+    return (
+      <div className="itemList">
+        {listNodes}
+      </div>
+    );
+  }
+});
+
+
+ReactDOM.render(
+  <itemsBox userId=userid pollInterval={2000} />,
+  document.getElementById('content');
+);

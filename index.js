@@ -60,13 +60,11 @@ app.post('/post', function (req, res) {
 });
 
 app.post('/links', function(req, res) {
-  console.log(req.body.id);
   db.collection(POSTS).findOne({_id : req.body.id}, function(err, result) {
     if (err) {
       console.log(err);
       return res.sendStatus(500)
     } else {
-      console.log(result);
       return res.status(200).send({
         data : result
       });
