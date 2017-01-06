@@ -10,6 +10,7 @@ var ItemBox = React.createClass({
         {"id" : this.props.userID},
         function(err, data) {
             this.setState({data: data});
+            console.log(data);
 
     }.bind(this)
   ).fail(function() {
