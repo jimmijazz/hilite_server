@@ -45,7 +45,7 @@ var itemBox = React.createClass({
   }
 });
 
-var itemList = React.createclass({
+var itemList = React.createClass({
   render: function() {
     var listNodes = this.props.data.map(function(item) {
       return (
