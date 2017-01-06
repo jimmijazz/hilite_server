@@ -11,6 +11,7 @@ var ItemBox = React.createClass({
         function(err, data) {
             this.setState({data: data});
             console.log(data);
+            console.log(err);
 
     }.bind(this)
   ).fail(function() {
