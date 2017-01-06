@@ -57,16 +57,12 @@ var insertPost = function(db, content, callback) {
 
 
 // Start webserver
-app.use(express.static(__dirname + "/public"));
+app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // Create a database variable outside of the database connection callback to reuse the connection pool in app.
 var db;
-
-app.get('/', function(req, res) {
-  res.send('Hilite App');
-});
 
 app.post('/post', function (req, res) {
   insertPost(db, req.body, function() {
