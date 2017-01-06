@@ -23,8 +23,9 @@ var ItemBox = React.createClass({
     this.getItems();
     // setInterval(this.getItems, this.props.pollInterval);
   },
-  console.log({this.state.data});
   render: function() {
+    console.log({this.state.data});
+
     return (
       <div className="itemsBox">
         <ItemList data = {this.state.data} />
