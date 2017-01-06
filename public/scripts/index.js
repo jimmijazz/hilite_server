@@ -23,6 +23,7 @@ var ItemBox = React.createClass({
     this.getItems();
     // setInterval(this.getItems, this.props.pollInterval);
   },
+  console.log({this.state.data});
   render: function() {
     return (
       <div className="itemsBox">
@@ -45,7 +46,7 @@ var ItemList = React.createClass({
     return (
       <div className="ItemList">
         {listNodes}
-      </div> 
+      </div>
     );
   }
 });
