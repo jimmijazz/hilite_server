@@ -84,8 +84,8 @@ app.post('/links', function(req, res) {
       console.log(err);
       return res.sendStatus(503)
     } else {
+      console.log(result);
       return res.status(200).send({
-        console.log(result);
         data : result
       });
     }
