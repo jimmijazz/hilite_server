@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 
+var path = require('path'); // Public folder with HTML etc for express
 var port = process.env.PORT || 8080;
 
 const mongodb = require("mongodb");
