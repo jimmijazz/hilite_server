@@ -42,7 +42,7 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 var insertPost = function(db, content, callback) {
 
   db.collection(POSTS).update(
-    { _id : content._id},
+    { _id : content[0]._id},
     {$push:
       { items : content }
     },
