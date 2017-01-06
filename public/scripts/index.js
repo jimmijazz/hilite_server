@@ -45,7 +45,7 @@ var ItemList = React.createClass({
     return (
       <div className="ItemList">
         {listNodes}
-      </div>
+      </div> 
     );
   }
 });
