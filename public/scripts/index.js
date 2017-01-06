@@ -63,5 +63,5 @@ var itemList = React.createclass({
 
 ReactDOM.render(
   <itemsBox userId={userid} pollInterval={2000} />,
-  document.getElementById('content');
+  document.getElementById('content')
 );
