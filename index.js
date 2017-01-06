@@ -76,6 +76,8 @@ app.post('/post', function (req, res) {
 });
 
 app.post('/links', function(req, res) {
+  console.log('fetching links')
+  console.log(req.body.id);
   db.collection(POSTS).findOne(
     {_id : req.body.id}
   ), function(err, result) {
