@@ -22,14 +22,23 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 });
 
 var insertPost = function(db, content, callback) {
-  db.collection(POSTS).update(db._id, content, {upsert: true}, function(err, results) {
-      if (err) {
-        console.log(err);
-      } else {
-      console.log("inserted into posts");
-    };
+  // Check if userID currently exists
+  db.collection(POSTS).findOne({_id : db._id}, function(err, result){
+    if (err) {
+      console.log(err);
+    } else if (!result) { // User does not exist
+        db.collection(POSTS).insertOne(content, function(err, results) {
+          if (err) console.log(err);
+        });
+    } else if (result) {
+        console.log("user exists")
+        db.collection(POSTS).insertOne(content, function(err, results) {
+
+        });
+      };
   });
 };
+
 
 // Start webserver
 app.use(express.static(__dirname + "/public"));
@@ -44,6 +53,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/post', function (req, res) {
+  console.log(req);
   insertPost(db, req.body, function() {
     db.close();
   });
