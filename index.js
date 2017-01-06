@@ -55,8 +55,6 @@ var insertPost = function(db, content, callback) {
 
 };
 
-
-
 // Start webserver
 app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: false}));
