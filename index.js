@@ -75,7 +75,7 @@ app.post('/post', function (req, res) {
   });
 });
 
-app.get('/links', function(req, res) {
+app.post('/links', function(req, res) {
   db.collection(POSTS).findone(
     {_id : req.body.id}
   ), function(err, result) {
