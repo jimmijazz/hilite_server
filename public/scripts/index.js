@@ -26,22 +26,24 @@ var ItemBox = React.createClass({
   render: function() {
     return (
       <div className="itemsBox">
-        <itemList data = {this.state.data} />
+        <ItemList data = {this.state.data} />
       </div>
     )
   }
 });
 
 // List of each of the item cards
-var itemList = React.createClass({
+var ItemList = React.createClass({
   render: function() {
-    var listNodes = this.props.data.map(function(item) {
+    var listNodes = this.props.data.items.map(function(item) {
       return (
-        <p>{item}</p>
+        <ItemCard host={item.hostname} text={item.text} url={item.url} >
+          {item.text}
+        </ItemCard>
       );
     });
     return (
-      <div className="itemList">
+      <div className="ItemList">
         {listNodes}
       </div>
     );
@@ -49,7 +51,7 @@ var itemList = React.createClass({
 });
 
 // individual item
-var itemCard = React.createClass({
+var ItemCard = React.createClass({
   rawMarkup: function() {
     var md = new Remarkable();
     var rawMarkup = md.render(this.props.children.toString());
@@ -58,9 +60,9 @@ var itemCard = React.createClass({
 
   render: function() {
     return (
-      <div className="comment">
-        <h2 className="commentAuthor">
-          {this.props.author}
+      <div className="ItemCard">
+        <h2 className="itemHost">
+          {this.props.host}
         </h2>
         <span dangerouslySetInnerHTML={this.rawMarkup()} />
       </div>
