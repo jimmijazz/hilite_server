@@ -44,7 +44,7 @@ var insertPost = function(db, content, callback) {
   db.collection(POSTS).update(
     { _id : content[0]._id},
     {$push:
-      { items : content }
+      { items : [content] }
     },
     { upsert : true },
     function(err) {
