@@ -10,6 +10,7 @@ var ItemBox = React.createClass({
         {"id" : this.props.userID},
         function(data, status) {
             this.setState({data: data});
+            console.log(data);
     }.bind(this)
   ).fail(function() {
       console.log("error");
@@ -47,6 +48,25 @@ var itemList = React.createClass({
   }
 });
 
+// individual item
+var itemCard = React.createClass({
+  rawMarkup: function() {
+    var md = new Remarkable();
+    var rawMarkup = md.render(this.props.children.toString());
+    return { __html: rawMarkup };
+  },
+
+  render: function() {
+    return (
+      <div className="comment">
+        <h2 className="commentAuthor">
+          {this.props.author}
+        </h2>
+        <span dangerouslySetInnerHTML={this.rawMarkup()} />
+      </div>
+    );
+  }
+});
 
 ReactDOM.render(
   <ItemBox userID={userid} pollInterval={2000} />,
