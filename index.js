@@ -22,23 +22,7 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
   console.log("database connection ready");
 });
 
-// var insertPost = function(db, content, callback) {
-//   // Check if userID currently exists
-//   db.collection(POSTS).findOne({_id : db._id}, function(err, result){
-//     if (err) {
-//       console.log(err);
-//     } else if (!result) { // User does not exist
-//         db.collection(POSTS).insertOne(content, function(err, results) {
-//           if (err) console.log(err);
-//         });
-//     } else if (result) {
-//         console.log("user exists")
-//         db.collection(POSTS).insertOne(content, function(err, results) {
-//
-//         });
-//       };
-//   });
-// };
+
 
 var insertItem = function(db, content, callback) {
   // Checks if user exists and inserts saved link
@@ -77,12 +61,10 @@ app.post('/post', function (req, res) {
 
 app.post('/links', function(req, res) {
   console.log(req.body.id);
-  db.collection(POSTS).findOne(
-    {_id : req.body.id}
-  ), function(err, result) {
+  db.collection(POSTS).findOne({_id : req.body.id}, function(err, result) {
     if (err) {
       console.log(err);
-      return res.sendStatus(503)
+      return res.sendStatus(500)
     } else {
       console.log(result);
       return res.status(200).send({
