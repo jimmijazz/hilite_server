@@ -9,7 +9,8 @@ var ItemBox = React.createClass({
         base_url + "/links",
         {"id" : this.props.userID},
         function(data, status) {
-            this.setState({data: data});
+            console.log(data);
+            this.setState({data: data.items});
             console.log(data);
     }.bind(this)
   ).fail(function() {
