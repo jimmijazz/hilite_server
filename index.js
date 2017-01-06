@@ -71,7 +71,7 @@ app.post('/links', function(req, res) {
         data : result
       });
     }
-  }
+  });
 });
 
 app.listen(port, function() {
