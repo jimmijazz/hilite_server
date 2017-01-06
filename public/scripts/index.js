@@ -1,7 +1,9 @@
 
 var base_url = "https://hiliteapp.herokuapp.com";
-var userid = "16b8be7599b43835e5dafd448de630664b4cacf551f7ad18ee49ca094cdcc44";
 
+// var userid = "16b8be7599b43835e5dafd448de630664b4cacf551f7ad18ee49ca094cdcc44";
+var userid = localStorage.getItem('userid');
+console.log(userid);
 // Contains all the item cards and loads list data
 var ItemBox = React.createClass({
   getItems : function() {
