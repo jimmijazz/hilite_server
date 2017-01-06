@@ -17,6 +17,7 @@ var getItems = function(userID) {
 };
 
 var itemBox = React.createClass({
+  console.log(this.props);
   getItems : function() {
     $.post(
         base_url + "/links",
