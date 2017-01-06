@@ -40,8 +40,8 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 //   });
 // };
 
-var insertPost = function(db, content, callback) {
-
+var insertItem = function(db, content, callback) {
+  // Checks if user exists and inserts saved link
   db.collection(POSTS).update(
     { _id : content._id},
     {$push:
@@ -55,6 +55,8 @@ var insertPost = function(db, content, callback) {
 
 };
 
+
+
 // Start webserver
 app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: false}));
@@ -64,7 +66,8 @@ app.use(bodyParser.json());
 var db;
 
 app.post('/post', function (req, res) {
-  insertPost(db, req.body, function() {
+  // User saves new item
+  insertItem(db, req.body, function() {
     db.close();
   });
   return res.status(200).send({
@@ -72,6 +75,20 @@ app.post('/post', function (req, res) {
   });
 });
 
+app.get('/links', function(req, res) {
+  db.collection(POSTS).findone(
+    {_id : req.body.id}
+  ), function(err, result) {
+    if (err) {
+      console.log(err);
+      return res.sendStatus(503)
+    } else if (!err) {
+      return res.status(200).send({
+        data : result
+      });
+    }
+  }
+});
 
 app.listen(port, function() {
   console.log("Listening on Port" + port);
