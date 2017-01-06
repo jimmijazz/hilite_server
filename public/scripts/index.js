@@ -30,7 +30,7 @@ var itemBox = React.createClass({
     })
   },
   getInitialState: function() {
-    return {datal []};
+    return {data: []};
   },
   componentDidMount: function() {
     this.getItems();
