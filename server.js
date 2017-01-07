@@ -25,7 +25,6 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 
 
 var insertItem = function(db, content, callback) {
-  console.log(content['text']);
   var item = {};
   item["item_id"] = content["item_id"];
   item["text"] = content["text"];
