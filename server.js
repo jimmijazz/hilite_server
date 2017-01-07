@@ -51,8 +51,10 @@ var deleteItem = function(db, content, callback) {
   console.log(content);
   db.collection(POSTS).update(
     {_id : content._id},
-    {$pull :
-      {items.item_id : content.item}
+    {$pull :{
+      items : 
+        {item_id : content.item}
+      }
     },
     function(err) {
       if (err) console.log(err);
