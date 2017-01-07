@@ -29,7 +29,7 @@ var ItemBox = React.createClass({
     // setInterval(this.getItems, this.props.pollInterval);
   },
   deleteComment: function(e) {
-    console.log(e.props);
+    console.log(e);
   },
 
   render: function() {
@@ -86,7 +86,7 @@ var ItemCard = React.createClass({
           {this.props.host}
         </h2>
         <span dangerouslySetInnerHTML={this.rawMarkup()} />
-        <button type="submit" className="delete" onClick={this.props.onDelete}>
+        <button type="submit" className="delete" onClick={this.handleClick}>
           &times;
         </button>
       </div>
