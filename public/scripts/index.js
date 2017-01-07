@@ -38,7 +38,7 @@ var ItemBox = React.createClass({
 // List of each of the item cards
 var ItemList = React.createClass({
   handleDelete: function(commentId) {
-    console.log(this.props.id);
+    console.log(this.props);
   },
   render: function() {
     var listNodes = this.props.data.map(function(item) {
