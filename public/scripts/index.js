@@ -39,9 +39,7 @@ var ItemBox = React.createClass({
 
 // List of each of the item cards
 var ItemList = React.createClass({
-  componentDidMount: function() {
-    console.log(this.props.data);
-  }
+
   // Delete items
   handleDelete: function(commentId) {
     // console.log(this.item_id);
