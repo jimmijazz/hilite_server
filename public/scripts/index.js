@@ -89,12 +89,12 @@ var ItemCard = React.createClass({
   render: function() {
     return (
       <div className="ItemCard">
-        <h2 className="itemHost">
-          {this.props.date}
-        </h2>
-        <h3>
+        <h3 className="itemHost">
           {this.props.host}
         </h3>
+        <h4>
+          {this.props.date}
+        </h4>
         <p>
           {this.props.text}
         </p>

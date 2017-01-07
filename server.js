@@ -37,7 +37,7 @@ var convertDate = function() {
   var monthIndex = dateObject.getMonth();
   var year = dateObject.getFullYear();
 
-  var fullDate = day + " " + monthNames[monthIndex].toString() + " " + year
+  var fullDate = monthNames[monthIndex].toString() + " " + day +  " " + year
 
   return fullDate.toString();
 }
