@@ -29,7 +29,7 @@ var ItemBox = React.createClass({
     // setInterval(this.getItems, this.props.pollInterval);
   },
   deleteComment: function(item) {
-    console.log(this.props);
+    console.log(item.props);
   },
   render: function() {
     return (
