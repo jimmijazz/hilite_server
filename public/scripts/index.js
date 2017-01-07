@@ -70,7 +70,7 @@ var ItemCard = React.createClass({
   },
   handleClick:function(e) {
     e.preventDefault();
-    return this.props.onDelete(this.props.id);
+    return this.props.onDelete(this.props.key);
   },
   render: function() {
     return (
