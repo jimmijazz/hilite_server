@@ -49,7 +49,7 @@ var ItemList = React.createClass({
         <ItemCard
             key={item.item_id}
             id ={item.item_id}  // key is a special prop so also need to use id.
-            user = {item._id}
+            user = {item.user_id}
             host={item.hostname}
             text={item.text}
             url={item.url}

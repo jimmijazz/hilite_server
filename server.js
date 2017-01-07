@@ -31,6 +31,7 @@ var insertItem = function(db, content, callback) {
   item["text"] = content["text"];
   item["url"] = content["url"];
   item["hostname"] = content["hostname"];
+  item["user_id"] = content["_id"];
   console.log(item)
 
 
