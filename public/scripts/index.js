@@ -114,7 +114,7 @@ var ItemCard = React.createClass({
   addTag:function(e) {
     e.preventDefault();
     return this.props.addTag()
-  }
+  },
   render: function() {
     return (
       <div className="ItemCard">
