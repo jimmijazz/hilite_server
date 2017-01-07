@@ -52,7 +52,7 @@ var ItemList = React.createClass({
           {item.text}
         </ItemCard>
       );
-    });
+    }.bind(this));
     return (
       <div className="ItemList">
         {listNodes}
