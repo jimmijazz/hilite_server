@@ -29,7 +29,7 @@ var ItemBox = React.createClass({
   deleteComment: function(item_id, user_id) {
     $.post(
       base_url + "/deleteitem",
-      {"_id" : user_id, "item" : item_id}, function(result, status) {
+      {"_id" : user_id, "item" : item_id}, function() {
         this.getItems();
       }
     ).fail(function() {
