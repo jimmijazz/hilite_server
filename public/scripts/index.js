@@ -38,13 +38,13 @@ var ItemBox = React.createClass({
 // List of each of the item cards
 var ItemList = React.createClass({
   handleDelete: function(commentId) {
-    console.log(this.props);
+    console.log(this.props.key);
   },
   render: function() {
     var listNodes = this.props.data.map(function(item) {
       return (
         <ItemCard
-            id={item._id}
+            key={item._id}
             host={item.hostname}
             text={item.text}
             url={item.url}
@@ -79,6 +79,9 @@ var ItemCard = React.createClass({
           {this.props.host}
         </h2>
         <span dangerouslySetInnerHTML={this.rawMarkup()} />
+        <button type="submit" className="delete" onClick={this.handleClick}>
+          &times;
+        </button>
       </div>
     );
   }
