@@ -50,7 +50,7 @@ var ItemList = React.createClass({
       return (
         <ItemCard
             key={item.item.item_id}
-            id ={item.item_id}  // key is a special prop so also need to use id.
+            id ={item.item.item_id}  // key is a special prop so also need to use id.
             user = {item.user_id}
             host={item.hostname}
             text={item.text}
