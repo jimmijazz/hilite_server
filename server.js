@@ -22,7 +22,10 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
   console.log("database connection ready");
 });
 
-var convertDate = function(dateObject) {
+var convertDate = function() {
+
+  var dateObject = new Date();
+  
   var monthNames = [
   "January", "February", "March",
   "April", "May", "June", "July",
@@ -47,7 +50,7 @@ var insertItem = function(db, content, callback) {
   item["url"] = content["url"];
   item["hostname"] = content["hostname"];
   item["user_id"] = content["_id"];
-  item["date"] = convertDate(content["date"]);
+  item["date"] = convertDate();
 
 
   // Checks if user exists and inserts saved link
