@@ -55,9 +55,9 @@ var deleteItem = function(db, content, callback) {
     },
     function(err) {
       if (err) console.log(err);
-    };
+    }
   );
-}
+};
 
 // Start webserver
 app.use('/', express.static(path.join(__dirname, 'public')));
