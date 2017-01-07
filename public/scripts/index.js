@@ -54,7 +54,7 @@ var ItemList = React.createClass({
             user = {item.item.user_id}
             host={item.item.hostname}
             text={item.item.text}
-            url={item.item.url}
+            url={item.item.url}>
           {item.item.text}
         </ItemCard>
       );
