@@ -19,6 +19,7 @@ var ItemBox = React.createClass({
       console.log("error");
     });
   },
+
   getInitialState: function() {
     return {data: []};
   },
@@ -39,15 +40,8 @@ var ItemBox = React.createClass({
 var ItemList = React.createClass({
   // Delete items
   handleDelete: function(commentId) {
-    $.post(
-        base_url + "/deleteitem",
-        {"id" : this.props.data._id},
-        function(data, status) {
-            console.log(data);
-    }.bind(this)
-  ).fail(function() {
-      console.log("error");
-    });
+    console.log(this.item_id);
+
   },
 
   render: function() {
