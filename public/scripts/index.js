@@ -40,7 +40,7 @@ var ItemList = React.createClass({
   handleDelete: function(commentId) {
     $.post(
         base_url + "/getitems",
-        {"id" : this.props.data[0]._id},
+        {"id" : this.props.data._id},
         function(data, status) {
           console.log(data.data.items);
             this.setState({data: data.data.items});
