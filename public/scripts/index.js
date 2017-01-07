@@ -71,8 +71,7 @@ var ItemCard = React.createClass({
   handleClick:function(e) {
     e.preventDefault();
     return this.props.onDelete(this.props.id);
-  }
-
+  },
   render: function() {
     return (
       <div className="ItemCard">
