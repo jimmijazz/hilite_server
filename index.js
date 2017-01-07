@@ -31,10 +31,10 @@ var insertItem = function(db, content, callback) {
     { _id : content._id},
     {$push:
       { items : {
-          content.item_id,
-          content.text,
-          content.url,
-          content.hostname
+          body.item_id,
+          body.text,
+          body.url,
+          body.hostname
         }
       }
     },
