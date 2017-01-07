@@ -45,6 +45,7 @@ var ItemList = React.createClass({
       return (
         <ItemCard
             key={item._id}
+            id ={item._id}  // key is a special prop so also need to use id.
             host={item.hostname}
             text={item.text}
             url={item.url}
@@ -70,7 +71,7 @@ var ItemCard = React.createClass({
   },
   handleClick:function(e) {
     e.preventDefault();
-    return this.props.onDelete(this.props.key);
+    return this.props.onDelete(this.props.id);
   },
   render: function() {
     return (
