@@ -25,7 +25,7 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 var convertDate = function() {
 
   var dateObject = new Date();
-  
+
   var monthNames = [
   "January", "February", "March",
   "April", "May", "June", "July",
@@ -35,11 +35,11 @@ var convertDate = function() {
 
   var day = dateObject.getDate();
   var monthIndex = dateObject.getMonth();
-  var year = date.getFullYear();
+  var year = dateObject.getFullYear();
 
   var fullDate = day + " " + monthNames[monthIndex].toString() + " " + year
 
-  return fullDate
+  return fullDate.toString();
 }
 
 
