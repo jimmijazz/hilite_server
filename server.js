@@ -38,7 +38,7 @@ var insertItem = function(db, content, callback) {
     { _id : content._id},
     {$push:
       { items : {
-        body
+        item
         }
       }
     },
