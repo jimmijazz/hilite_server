@@ -130,7 +130,7 @@ var ItemCard = React.createClass({
         <button type="submit" className="delete" onClick={this.handleClick}>
           &times;
         </button>
-        <
+        
       </div>
     );
   }
