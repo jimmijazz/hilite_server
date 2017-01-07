@@ -34,7 +34,7 @@ var ItemBox = React.createClass({
   render: function() {
     return (
       <div className="itemsBox">
-        <ItemList data = {this.state.data} />
+        <ItemList data = {this.state.data} handleDelete={this.deleteComment} />
       </div>
     )
   }
@@ -45,7 +45,7 @@ var ItemList = React.createClass({
 
   // Delete items
   handleDelete: function(commentId) {
-    console.log(this.item_id);
+    console.log(this.props.item_id);
   },
 
   render: function() {
@@ -58,7 +58,7 @@ var ItemList = React.createClass({
             host={item.hostname}
             text={item.text}
             url={item.url}
-            onDelete={this.handleDelete}>
+            onDelete={this.props.handleDelete}>
           {item.text}
         </ItemCard>
       );
@@ -89,7 +89,7 @@ var ItemCard = React.createClass({
           {this.props.host}
         </h2>
         <span dangerouslySetInnerHTML={this.rawMarkup()} />
-        <button type="submit" className="delete" onClick={this.handleClick}>
+        <button type="submit" className="delete" onClick={this.props.onDelete}>
           &times;
         </button>
       </div>
