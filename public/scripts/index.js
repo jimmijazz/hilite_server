@@ -127,10 +127,10 @@ var ItemCard = React.createClass({
         <p>
           {this.props.text}
         </p>
-        <button type="submit" className="delete" onClick={this.handleClick}>
+        <button type="submit" className="btn btn-dager" onClick={this.handleClick}>
           &times;
         </button>
-        
+
       </div>
     );
   }
