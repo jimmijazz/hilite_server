@@ -22,6 +22,22 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
   console.log("database connection ready");
 });
 
+var convertDate = function(dateObject) {
+  var monthNames = [
+  "January", "February", "March",
+  "April", "May", "June", "July",
+  "August", "September", "October",
+  "November", "December"
+  ];
+
+  var day = dateObject.getDate();
+  var monthIndex = dateObject.getMonth();
+  var year = date.getFullYear();
+
+  var fullDate = day, monthNames[monthIndex], year)
+
+  return fullDate
+}
 
 
 var insertItem = function(db, content, callback) {
@@ -31,7 +47,7 @@ var insertItem = function(db, content, callback) {
   item["url"] = content["url"];
   item["hostname"] = content["hostname"];
   item["user_id"] = content["_id"];
-  item["date"] = content["date"];
+  item["date"] = convertDate(content["date"]);
 
 
   // Checks if user exists and inserts saved link
