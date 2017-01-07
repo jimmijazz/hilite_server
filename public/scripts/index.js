@@ -31,7 +31,7 @@ var ItemBox = React.createClass({
       base_url + "/deleteitem",
       {"_id" : user_id, "item" : item_id}, function(result, status) {
         this.getItems();
-      }.bind(this);
+      }
     ).fail(function() {
       console.log("error");
     });
