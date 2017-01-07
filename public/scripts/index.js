@@ -49,13 +49,14 @@ var ItemList = React.createClass({
     var listNodes = this.props.data.map(function(item) {
       return (
         <ItemCard
-            key={item.item.item_id}
-            id ={item.item.item_id}  // key is a special prop so also need to use id.
-            user = {item.item.user_id}
-            host={item.item.hostname}
-            text={item.item.text}
-            url={item.item.url}>
-          {item.item.text}
+            key={item.item_id}
+            id ={item.item_id}  // key is a special prop so also need to use id.
+            user = {item.user_id}
+            host={item.hostname}
+            text={item.text}
+            url={item.url}
+            onDelete={this.handleDelete}>
+          {item.text}
         </ItemCard>
       );
     }.bind(this));
