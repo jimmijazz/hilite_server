@@ -28,8 +28,9 @@ var ItemBox = React.createClass({
     this.getItems();
     // setInterval(this.getItems, this.props.pollInterval);
   },
-  deleteComment: function(e) {
-    console.log(e);
+  deleteComment: function(id, user) {
+
+    console.log(id, user);
   },
 
   render: function() {
@@ -77,7 +78,7 @@ var ItemCard = React.createClass({
   },
   handleClick:function(e) {
     e.preventDefault();
-    return this.props.onDelete(this.props.id);
+    return this.props.onDelete(this.props.id, this.props.user);
   },
   render: function() {
     return (
