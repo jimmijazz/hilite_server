@@ -12,9 +12,11 @@ var ItemBox = React.createClass({
         base_url + "/getitems",
         {"id" : this.props.userID},
         function(result, status) {
+          
           console.log("data",result.data.items);
+          console.log(result.data.items[0].item_id);
+
           this.setState({data: result.data.items});
-          console.log(data.data.items[0].item_id);
     }.bind(this)
   ).fail(function() {
       console.log("error");
