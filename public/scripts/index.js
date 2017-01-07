@@ -46,10 +46,23 @@ var ItemList = React.createClass({
   // },
 
   render: function() {
-
+    var listNodes = this.props.data.map(function(item) {
+      return (
+        <ItemCard
+            key={item.item.item_id}
+            id ={item.item.item_id}  // key is a special prop so also need to use id.
+            user = {item.user_id}
+            host={item.hostname}
+            text={item.text}
+            url={item.url}
+            onDelete={this.handleDelete}>
+          {item.text}
+        </ItemCard>
+      );
+    }.bind(this));
     return (
       <div className="ItemList">
-        { this.props.data }
+        {listNodes}
       </div>
     );
   }
