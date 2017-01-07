@@ -55,7 +55,6 @@ var ItemList = React.createClass({
             host={item.item.hostname}
             text={item.item.text}
             url={item.item.url}
-            // onDelete={this.handleDelete}>
           {item.item.text}
         </ItemCard>
       );
