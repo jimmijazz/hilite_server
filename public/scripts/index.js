@@ -53,8 +53,9 @@ var ItemList = React.createClass({
     var listNodes = this.props.data.map(function(item) {
       return (
         <ItemCard
-            key={item._id}
-            id ={item._id}  // key is a special prop so also need to use id.
+            key={item.item_id}
+            id ={item.item_id}  // key is a special prop so also need to use id.
+            user = {item._id}
             host={item.hostname}
             text={item.text}
             url={item.url}
