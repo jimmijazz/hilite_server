@@ -31,6 +31,7 @@ var insertItem = function(db, content, callback) {
   item["url"] = content["url"];
   item["hostname"] = content["hostname"];
   item["user_id"] = content["_id"];
+  item["date"] = content["date"];
 
 
   // Checks if user exists and inserts saved link
@@ -52,7 +53,7 @@ var deleteItem = function(db, content, callback) {
   db.collection(POSTS).update(
     {_id : content._id},
     {$pull :{
-      items : 
+      items :
         {item_id : content.item}
       }
     },

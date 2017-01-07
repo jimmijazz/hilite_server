@@ -61,6 +61,7 @@ var ItemList = React.createClass({
             host={item.hostname}
             text={item.text}
             url={item.url}
+            date = {item.date}
             onDelete={this.props.handleDelete}>
           {item.text}
         </ItemCard>
@@ -89,9 +90,14 @@ var ItemCard = React.createClass({
     return (
       <div className="ItemCard">
         <h2 className="itemHost">
-          {this.props.host}
+          {this.props.date}
         </h2>
-        <span dangerouslySetInnerHTML={this.rawMarkup()} />
+        <h3>
+          {this.props.host}
+        </h3>
+        <p>
+          {this.props.text}
+        </p>
         <button type="submit" className="delete" onClick={this.handleClick}>
           &times;
         </button>
