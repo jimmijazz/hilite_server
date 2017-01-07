@@ -28,6 +28,9 @@ var ItemBox = React.createClass({
     this.getItems();
     // setInterval(this.getItems, this.props.pollInterval);
   },
+  deleteComment: function(commentId) {
+    console.log(commentId);
+  },
   render: function() {
     return (
       <div className="itemsBox">
@@ -42,7 +45,7 @@ var ItemList = React.createClass({
 
   // Delete items
   handleDelete: function(commentId) {
-    // console.log(this.item_id);
+    console.log(this.item_id);
   },
 
   render: function() {
