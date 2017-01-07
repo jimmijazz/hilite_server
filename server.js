@@ -47,10 +47,17 @@ var insertItem = function(db, content, callback) {
 
 };
 
-// var deleteItem = function(db, content, callback) {
-//   console.log(content);
-//   db.collection(POSTS).
-// }
+var deleteItem = function(db, content, callback) {
+  db.collection(POSTS).update(
+    {_id : content._id},
+    {$pull :
+      {items : content.item}
+    },
+    function(err) {
+      if (err) console.log(err);
+    };
+  );
+}
 
 // Start webserver
 app.use('/', express.static(path.join(__dirname, 'public')));
@@ -90,6 +97,9 @@ app.post('/post', function (req, res) {
 app.post('/deleteitem', function(req, res) {
   deleteItem(db, req.body, function() {
     db.close();
+  });
+  return res.status(200).send({
+    message: "Item deleted"
   });
 });
 

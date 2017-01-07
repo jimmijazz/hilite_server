@@ -12,8 +12,6 @@ var ItemBox = React.createClass({
         base_url + "/getitems",
         {"id" : this.props.userID},
         function(result, status) {
-
-          console.log("data",result.data.items);
           this.setState({data: result.data.items});
     }.bind(this)
   ).fail(function() {
@@ -28,9 +26,15 @@ var ItemBox = React.createClass({
     this.getItems();
     // setInterval(this.getItems, this.props.pollInterval);
   },
-  deleteComment: function(id, user) {
-
-    console.log(id, user);
+  deleteComment: function(item_id, user_id) {
+    $.post(
+      base_url + "/deleteitem",
+      {"_id" : user_id, "item" : id_id}, function(result, status) {
+        this.getItems();  
+      }
+    ).fail(function() {
+      console.log("error");
+    });
   },
 
   render: function() {
