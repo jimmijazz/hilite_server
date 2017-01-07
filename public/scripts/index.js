@@ -43,13 +43,13 @@ var ItemList = React.createClass({
         base_url + "/deleteitem",
         {"id" : this.props.data._id},
         function(data, status) {
-          console.log(data.data.items);
-            this.setState({data: data.data.items});
+            console.log(data.data.items);
     }.bind(this)
   ).fail(function() {
       console.log("error");
     });
   },
+
   render: function() {
     var listNodes = this.props.data.map(function(item) {
       return (

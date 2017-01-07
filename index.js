@@ -78,8 +78,10 @@ app.post('/post', function (req, res) {
 
 // Remove item
 app.post('/deleteitem', function(req, res) {
-  console.log(req.body);
-})
+  return res.status(200).send({
+    message: req.body
+  });
+});
 
 app.listen(port, function() {
   console.log("Listening on Port" + port);
