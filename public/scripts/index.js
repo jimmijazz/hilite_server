@@ -7,9 +7,11 @@ var userid = localStorage.getItem('userid');
 
 var App = React.createClass({
   render: function() {
+    return (
     <ItemBox userID={this.props.userID}
     pollInterval={this.props.pollInterval} />
-  };
+    );
+  }
 });
 
 // Contains all the item cards and loads list data
