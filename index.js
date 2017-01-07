@@ -29,7 +29,7 @@ var insertItem = function(db, content, callback) {
   db.collection(POSTS).update(
     { _id : content._id},
     {$push:
-      { items : content }
+      { items : content.body }
     },
     { upsert : true },
     function(err) {
