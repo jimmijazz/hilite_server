@@ -9,7 +9,7 @@ console.log(userid);
 var ItemBox = React.createClass({
   getItems : function() {
     $.post(
-        base_url + "/links",
+        base_url + "/getitems",
         {"id" : this.props.userID},
         function(data, status) {
           console.log(data.data.items);
@@ -24,7 +24,7 @@ var ItemBox = React.createClass({
   },
   componentDidMount: function() {
     this.getItems();
-    setInterval(this.getItems, this.props.pollInterval);
+    // setInterval(this.getItems, this.props.pollInterval);
   },
   render: function() {
     return (
@@ -37,10 +37,18 @@ var ItemBox = React.createClass({
 
 // List of each of the item cards
 var ItemList = React.createClass({
+  handleDelete: function(commentId) {
+    console.log(this.props);
+  },
   render: function() {
     var listNodes = this.props.data.map(function(item) {
       return (
-        <ItemCard host={item.hostname} text={item.text} url={item.url} >
+        <ItemCard
+            id={item._id}
+            host={item.hostname}
+            text={item.text}
+            url={item.url}
+            onDelete={this.handleDelete};>
           {item.text}
         </ItemCard>
       );
@@ -53,13 +61,17 @@ var ItemList = React.createClass({
   }
 });
 
-// individual item
+// Individual item
 var ItemCard = React.createClass({
   rawMarkup: function() {
     var md = new Remarkable();
     var rawMarkup = md.render(this.props.children.toString());
     return { __html: rawMarkup };
   },
+  handleClick:function(e) {
+    e.preventDefault();
+    return this.props.onDelete(this.props.id);
+  }
 
   render: function() {
     return (

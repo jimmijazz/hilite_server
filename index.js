@@ -49,17 +49,9 @@ app.use(bodyParser.json());
 // Create a database variable outside of the database connection callback to reuse the connection pool in app.
 var db;
 
-app.post('/post', function (req, res) {
-  // User saves new item
-  insertItem(db, req.body, function() {
-    db.close();
-  });
-  return res.status(200).send({
-    message : "Your message has been posted"
-  });
-});
 
-app.post('/links', function(req, res) {
+// Gets the users items
+app.post('/getitems', function(req, res) {
   db.collection(POSTS).findOne({_id : req.body.id}, function(err, result) {
     if (err) {
       console.log(err);
@@ -71,6 +63,22 @@ app.post('/links', function(req, res) {
     }
   });
 });
+
+// Create new item
+app.post('/post', function (req, res) {
+  // User saves new item
+  insertItem(db, req.body, function() {
+    db.close();
+  });
+  return res.status(200).send({
+    message : "Your message has been posted"
+  });
+});
+
+// Remove item
+// app.post('/deleteitem', function(req, res) {
+//
+// })
 
 app.listen(port, function() {
   console.log("Listening on Port" + port);
