@@ -48,6 +48,7 @@ var insertItem = function(db, content, callback) {
 };
 
 var deleteItem = function(db, content, callback) {
+  console.log(content);
   db.collection(POSTS).update(
     {_id : content._id},
     {$pull :
