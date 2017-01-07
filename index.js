@@ -30,10 +30,10 @@ var insertItem = function(db, content, callback) {
     { _id : content._id},
     {$push:
       { items : {
-        content.item_id,
-        content.text,
-        content.url,
-        content.hostname
+        content['item_id'],
+        content['text'],
+        content['url'],
+        content['hostname']
         }
     },
     { upsert : true },
