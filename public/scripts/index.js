@@ -11,9 +11,9 @@ var ItemBox = React.createClass({
     $.post(
         base_url + "/getitems",
         {"id" : this.props.userID},
-        function(data, status) {
-          console.log("data",data.data.items);
-          this.setState({data: data.data.items});
+        function(result, status) {
+          console.log("data",result.data.items);
+          this.setState({data: result.data.items});
           console.log(data.data.items[0].item_id);
     }.bind(this)
   ).fail(function() {
