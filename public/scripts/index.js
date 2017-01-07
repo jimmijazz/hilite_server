@@ -37,11 +37,25 @@ var ItemBox = React.createClass({
       console.log("error");
     });
   },
+  addTag : function(item_id, user_id, tag) {
+    $.post(
+      base_url + "/addtag",
+      {'_id':user_id, 'item': item_id, 'tag':tag},
+      function() {
+        this.getItems();
+      }.bind(this);
+    ).failt(function() {
+      console.log("error");
+    });
+  },
 
   render: function() {
     return (
       <div className="itemsBox">
-        <ItemList data = {this.state.data} handleDelete={this.deleteComment} />
+        <ItemList data = {this.state.data}
+          handleDelete = {this.deleteComment}
+          addTag = {this.addTag}
+          />
       </div>
     )
   }
@@ -55,14 +69,16 @@ var ItemList = React.createClass({
     var listNodes = this.props.data.map(function(item) {
       return (
         <ItemCard
-            key={item.item_id}
-            id ={item.item_id}  // key is a special prop so also need to use id.
+            key = {item.item_id}
+            id = {item.item_id}  // key is a special prop so also need to use id.
             user = {item.user_id}
-            host={item.hostname}
-            text={item.text}
-            url={item.url}
+            host = {item.hostname}
+            text = {item.text}
+            url = {item.url}
             date = {item.date}
-            onDelete={this.props.handleDelete}>
+            onDelete ={ this.props.handleDelete}
+            addTag = {this.props.addTag}
+          >
           {item.text}
         </ItemCard>
       );
@@ -86,6 +102,10 @@ var ItemCard = React.createClass({
     e.preventDefault();
     return this.props.onDelete(this.props.id, this.props.user);
   },
+  addTag:function(e) {
+    e.preventDefault();
+    return this.props.addTag()
+  }
   render: function() {
     return (
       <div className="ItemCard">
@@ -101,6 +121,7 @@ var ItemCard = React.createClass({
         <button type="submit" className="delete" onClick={this.handleClick}>
           &times;
         </button>
+        <
       </div>
     );
   }
