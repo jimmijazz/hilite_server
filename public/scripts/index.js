@@ -32,7 +32,7 @@ var ItemBox = React.createClass({
       {"_id" : user_id, "item" : item_id},
       function() {
         this.getItems();
-      }.bind(this);
+      }.bind(this)
     ).fail(function() {
       console.log("error");
     });
