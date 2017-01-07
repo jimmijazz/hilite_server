@@ -40,10 +40,10 @@ var ItemBox = React.createClass({
 // List of each of the item cards
 var ItemList = React.createClass({
 
-  // Delete items
-  handleDelete: function(commentId) {
-    // console.log(this.item_id);
-  },
+  // // Delete items
+  // handleDelete: function(commentId) {
+  //   // console.log(this.item_id);
+  // },
 
   render: function() {
     var listNodes = this.props.data.map(function(item) {
