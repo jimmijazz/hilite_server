@@ -25,12 +25,16 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 
 
 var insertItem = function(db, content, callback) {
-  console.log(content);
   // Checks if user exists and inserts saved link
   db.collection(POSTS).update(
     { _id : content._id},
     {$push:
-      { items : content }
+      { items : {
+        content.item_id,
+        content.text,
+        content.url,
+        content.hostname
+        }
     },
     { upsert : true },
     function(err) {
@@ -40,7 +44,10 @@ var insertItem = function(db, content, callback) {
 
 };
 
-
+var deleteItem = funtion(db, content, callback) {
+  console.log(content);
+  db.collection(POSTS).
+}
 
 // Start webserver
 app.use('/', express.static(path.join(__dirname, 'public')));
@@ -78,8 +85,8 @@ app.post('/post', function (req, res) {
 
 // Remove item
 app.post('/deleteitem', function(req, res) {
-  return res.status(200).send({
-    message: req.body
+  deleteItem(db, req.body, function() {
+    db.close();
   });
 });
 
