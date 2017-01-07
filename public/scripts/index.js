@@ -12,7 +12,7 @@ var ItemBox = React.createClass({
         base_url + "/getitems",
         {"id" : this.props.userID},
         function(data, status) {
-          console.log(data.data.items);
+          // console.log(data.data.items);
             this.setState({data: data.data.items});
     }.bind(this)
   ).fail(function() {
@@ -39,7 +39,7 @@ var ItemBox = React.createClass({
 var ItemList = React.createClass({
   handleDelete: function(commentId) {
     $.post(
-        base_url + "/getitems",
+        base_url + "/deleteitems",
         {"id" : this.props.data._id},
         function(data, status) {
           console.log(data.data.items);
