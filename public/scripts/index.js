@@ -62,7 +62,7 @@ var ItemList = React.createClass({
     }.bind(this));
     return (
       <div className="ItemList">
-        {listNodes}
+        { this.props.data }
       </div>
     );
   }
