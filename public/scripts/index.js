@@ -40,7 +40,7 @@ var ItemBox = React.createClass({
 var ItemList = React.createClass({
   // Delete items
   handleDelete: function(commentId) {
-    console.log(this.item_id);
+    // console.log(this.item_id);
   },
 
   render: function() {
