@@ -30,7 +30,7 @@ var ItemBox = React.createClass({
   },
   deleteComment: function(item) {
     console.log(this.id);
-    console.log(this.props);
+    console.log(this.props.target.value);
     console.log(item);
     console.log(this);
     console.log(item.props)
