@@ -40,7 +40,7 @@ var insertItem = function(db, content, callback) {
 
 };
 
-var deleteItem = funtion(db, content, callback) {
+var deleteItem = function(db, content, callback) {
   console.log(content);
   db.collection(POSTS).
 }
