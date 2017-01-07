@@ -33,6 +33,7 @@ var ItemBox = React.createClass({
     console.log(this.props);
     console.log(item);
     console.log(this);
+    console.log(item.props)
   },
   render: function() {
     return (
