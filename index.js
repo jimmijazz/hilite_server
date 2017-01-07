@@ -40,10 +40,10 @@ var insertItem = function(db, content, callback) {
 
 };
 
-var deleteItem = function(db, content, callback) {
-  console.log(content);
-  db.collection(POSTS).
-}
+// var deleteItem = function(db, content, callback) {
+//   console.log(content);
+//   db.collection(POSTS).
+// }
 
 // Start webserver
 app.use('/', express.static(path.join(__dirname, 'public')));
