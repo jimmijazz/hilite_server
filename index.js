@@ -25,16 +25,20 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 
 
 var insertItem = function(db, content, callback) {
-  body = JSON.stringify(content)
-  console.log(body['item_id']);
   console.log(content['text']);
+  var body = {};
+  body["item_id"] = content["item_id"];
+  body["text"] = content["text"];
+  body["url"] = content["url"];
+  body["hostname"] = content["hostname"];
+
 
   // Checks if user exists and inserts saved link
   db.collection(POSTS).update(
     { _id : content._id},
     {$push:
       { items : {
-        content['text']
+        body
         }
       }
     },
