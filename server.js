@@ -71,7 +71,7 @@ app.post('/getitems', function(req, res) {
       console.log(err);
       return res.sendStatus(500)
     } else {
-      console.log(result);
+      console.log("results",result);
       return res.status(200).send({
         data : result
       });
