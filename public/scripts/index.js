@@ -9,7 +9,7 @@ var App = React.createClass({
   render: function() {
     <ItemBox userID={this.props.userID}
     pollInterval={this.props.pollInterval} />
-  }
+  };
 });
 
 // Contains all the item cards and loads list data
@@ -50,8 +50,8 @@ var ItemBox = React.createClass({
       {'_id':user_id, 'item': item_id, 'tag':tag},
       function() {
         this.getItems();
-      }.bind(this);
-    ).failt(function() {
+      }.bind(this)
+    ).fail(function() {
       console.log("error");
     });
   },
