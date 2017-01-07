@@ -37,9 +37,10 @@ var ItemBox = React.createClass({
 
 // List of each of the item cards
 var ItemList = React.createClass({
+  // Delete items
   handleDelete: function(commentId) {
     $.post(
-        base_url + "/deleteitems",
+        base_url + "/deleteitem",
         {"id" : this.props.data._id},
         function(data, status) {
           console.log(data.data.items);
