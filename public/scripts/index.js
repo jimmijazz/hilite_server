@@ -38,7 +38,16 @@ var ItemBox = React.createClass({
 // List of each of the item cards
 var ItemList = React.createClass({
   handleDelete: function(commentId) {
-    console.log(this.props);
+    $.post(
+        base_url + "/getitems",
+        {"id" : this.props.data[0]._id},
+        function(data, status) {
+          console.log(data.data.items);
+            this.setState({data: data.data.items});
+    }.bind(this)
+  ).fail(function() {
+      console.log("error");
+    });
   },
   render: function() {
     var listNodes = this.props.data.map(function(item) {

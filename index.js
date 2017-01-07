@@ -76,9 +76,9 @@ app.post('/post', function (req, res) {
 });
 
 // Remove item
-// app.post('/deleteitem', function(req, res) {
-//
-// })
+app.post('/deleteitem', function(req, res) {
+  console.log(req.body);
+})
 
 app.listen(port, function() {
   console.log("Listening on Port" + port);
