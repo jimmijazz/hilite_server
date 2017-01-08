@@ -125,6 +125,11 @@ var ItemCard = React.createClass({
   },
   copyClick:function(e) {
     e.preventDefault();
+    var selectedText = document.querySelector('#'+ {this.props.id});
+    var range = document.createRange();
+    range.selectNode(selectedText);
+    window.getSelection().addRange(range);
+
     try {
       var successful = document.execCommand('copy');
       var msg = successful ? 'successful' : 'unsuccessful';
@@ -132,6 +137,10 @@ var ItemCard = React.createClass({
     } catch(err) {
       console.log('Unable to copy');
     }
+    // Remove the selections - NOTE: Should use
+    // removeRange(range) when it is supported
+    window.getSelection().removeAllRanges();
+
   },
   render: function() {
     return (
@@ -142,7 +151,7 @@ var ItemCard = React.createClass({
         <h4>
           {this.props.date}
         </h4>
-        <p>
+        <p id={this.props.id}>
           {this.props.text}
         </p>
         <button type="submit" className="btn btn-danger" onClick={this.handleClick}>
