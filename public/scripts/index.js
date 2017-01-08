@@ -28,7 +28,11 @@ var ItemBox = React.createClass({
         base_url + "/getitems",
         {"id" : this.props.userID},
         function(result, status) {
-          this.setState({data: result.data.items});
+          if (result.data.items == null) {
+            console.log('nothing here');
+          } else {
+            this.setState({data: result.data.items});
+          }
     }.bind(this)
   ).fail(function() {
       console.log("error");
