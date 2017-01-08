@@ -125,7 +125,8 @@ var ItemCard = React.createClass({
   },
   copyClick:function(e) {
     e.preventDefault();
-    var selectedText = document.querySelector('#'+ this.props.id);
+    var selector = "[id=" + this.props.id + "]";
+    var selectedText = document.querySelector(selector);
     var range = document.createRange();
     range.selectNode(selectedText);
     window.getSelection().addRange(range);
